@@ -1,0 +1,21 @@
+﻿- Bare minimums
+	- shapes
+	- a point light
+	- film
+	- an image
+	- math
+		- ray
+		- vector
+		- matrix
+	- camera
+		- orthogonal
+	- integration
+	- brdf
+
+- what to do
+	- create a film from image dimensions (normalized)
+	- create a ray from the film and camera
+	- intersect ray in scene
+	- integrate brdf & lights
+	- save sum in film
+	- turn film into image
