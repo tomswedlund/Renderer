@@ -44,12 +44,33 @@ namespace Renderer.Math
             Transformation tempTrans = new Transformation(this);
             tempTrans.Matrix *= scaleMat;
             return tempTrans;
-            
         }
 
         public Transformation Rotate(float angle, float x, float y, float z)
         {
-            throw new NotImplementedException("Transform.Rotate");
+            float xy = x * y;
+            float xz = x * z;
+            float yz = y * z;
+            float rads = Math.Utils.Deg2Rad(angle);
+            float cos = (float)System.Math.Cos(rads);
+            float sin = (float)System.Math.Sin(rads);
+            float omc = 1 - cos;
+            float oms = 1 - sin;
+
+            Matrix rotMat = new Matrix();
+            rotMat[0, 0] = cos + x * x * omc;
+            rotMat[0, 1] = xy * omc - z * sin;
+            rotMat[0, 2] = xz * omc + y * sin;
+            rotMat[1, 0] = xy * omc + z * sin;
+            rotMat[1, 1] = cos + y * y * omc;
+            rotMat[1, 2] = yz * omc - x * sin;
+            rotMat[2, 0] = xz * omc - y * sin;
+            rotMat[2, 1] = yz * omc + x * sin;
+            rotMat[2, 2] = cos + z * z * omc;
+
+            Transformation tempTrans = new Transformation(this);
+            tempTrans.Matrix *= rotMat;
+            return tempTrans;
         }
 
         public Transformation Inverse()

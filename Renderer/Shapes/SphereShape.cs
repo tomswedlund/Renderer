@@ -15,7 +15,7 @@ namespace Renderer.Shapes
             this.BRDF = brdf;
         }
 
-        public bool Intersect(Ray ray, out Intersection intersection)
+        public bool Intersect(Ray ray, out Intersection intersection, out float t)
         {
             float a = Vector.Dot(ray.Direction, ray.Direction);
             Vector omc = ray.Origin - this._center;
@@ -26,6 +26,7 @@ namespace Renderer.Shapes
             if (sqr < 0)
             {
                 intersection = null;
+                t = 0;
                 return false;
             }
 
@@ -35,12 +36,13 @@ namespace Renderer.Shapes
             };
             if (sqr == 0)
             {
-                intersection.Point = ray[-b/2];
+                t = -b / 2;
+                intersection.Point = ray[t];
             }
             else
             {
                 sqr = (float)System.Math.Sqrt(sqr);
-                float t = System.Math.Min(-b + sqr, -b - sqr) * 0.5f;
+                t = System.Math.Min(-b + sqr, -b - sqr) * 0.5f;
                 intersection.Point = ray[t];
             }
             intersection.Normal = new Normal(intersection.Point - this._center);

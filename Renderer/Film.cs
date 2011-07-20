@@ -38,6 +38,7 @@ namespace Renderer
                 for (int y = 0; y < this.Height; ++y)
                 {
                     int i = System.Math.Min(255, (int)(this._pixels[x, y] * 255));
+                    i = System.Math.Max(i, 0);
                     Color color = Color.FromArgb(i, i, i);
                     image.SetPixel(x, y, color);
                 }

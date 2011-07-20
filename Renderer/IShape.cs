@@ -6,7 +6,7 @@ namespace Renderer
     {
         IBRDF BRDF { get; }
 
-        bool Intersect(Ray ray, out Intersection intersection);
+        bool Intersect(Ray ray, out Intersection intersection, out float t);
 
         void Transform(Transformation trans);
     }

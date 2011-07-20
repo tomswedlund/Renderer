@@ -19,7 +19,7 @@ namespace Renderer
                     Math.Point rayOrigin = new Math.Point()
                     {
                         X = (x - halfWidth) / film.Width,
-                        Y = -(y - halfHeight) / film.Height,
+                        Y = -(y - halfHeight) / film.Width,
                         Z = 0
                     };
                     Ray ray = camera.GenerateRay(rayOrigin);

@@ -14,15 +14,17 @@ namespace Renderer.Shapes
             this.SetupCorners();
         }
 
-        public bool Intersect(Ray ray, out Intersection intersection)
+        public bool Intersect(Ray ray, out Intersection intersection, out float t)
         {
             intersection = null;
+            t = 0;
             Vector pmo = this._corners[0] - ray.Origin;
             Normal normal = this.CalcPlaneNormal();
             float denom = Vector.Dot(normal, ray.Direction);
             if (!Math.Utils.IsZero(denom))
             {
-                Point point = ray[Vector.Dot(normal, pmo) / denom];
+                t = Vector.Dot(normal, pmo) / denom;
+                Point point = ray[t];
                 if (this.PointInRect(point))
                 {
                     intersection = new Intersection()

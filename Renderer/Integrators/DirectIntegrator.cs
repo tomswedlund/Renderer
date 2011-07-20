@@ -12,9 +12,14 @@ namespace Renderer.Integrators
             {
                 foreach (Light thisLight in scene.Lights)
                 {
+                    Point lightPos = null;
                     Normal lightDir = null;
-                    float lightL = thisLight.L(intersection.Point, out lightDir);
-                    L += (intersection.Shape.BRDF.f(-ray.Direction, lightDir) * lightL * System.Math.Max(0, Vector.Dot(intersection.Normal, lightDir)));
+                    float lightL = thisLight.L(intersection.Point, out lightPos, out lightDir);
+                    if (!scene.Intersect(intersection.Point, lightPos))
+                    {
+                        float dot = System.Math.Max(0, Vector.Dot(intersection.Normal, lightDir));
+                        L += (intersection.Shape.BRDF.f(-ray.Direction, lightDir) * lightL * dot);
+                    }
                 }
             }
             return L;

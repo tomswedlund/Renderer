@@ -13,11 +13,12 @@ namespace Renderer
             this.Position = new Point();
         }
 
-        public float L(Point point, out Normal direction)
+        public float L(Point point, out Point lightPos, out Normal lightDir)
         {
             Vector dir = this.Position - point;
             float dist = dir.Magnitude();
-            direction = new Normal(dir);
+            lightDir = new Normal(dir);
+            lightPos = this.Position;
             return (this.E / (dist * dist));
         }
 

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BRDFs\LambertianBRDF.cs" />
+    <Compile Include="Cameras\PerspectiveCamera.cs" />
     <Compile Include="IBRDF.cs" />
     <Compile Include="Cameras\OrthogonalCamera.cs" />
     <Compile Include="Film.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Ray.cs" />
     <Compile Include="Renderer.cs" />
     <Compile Include="Scene.cs" />
+    <Compile Include="Shapes\PlaneShape.cs" />
     <Compile Include="Shapes\SphereShape.cs" />
   </ItemGroup>
   <ItemGroup>
