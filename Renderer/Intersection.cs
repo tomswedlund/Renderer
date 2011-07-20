@@ -7,5 +7,7 @@ namespace Renderer
         public IShape Shape { get; set; }
         public Point Point { get; set; }
         public Normal Normal { get; set; }
+        public float TextureCoordU { get; set; }
+        public float TextureCoordV { get; set; }
     }
 }

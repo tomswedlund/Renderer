@@ -5,12 +5,12 @@ namespace Renderer
 {
     public class Film
     {
-        private float[,] _pixels = null;
+        private Color[,] _pixels = null;
 
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        public float this[int x, int y]
+        public Color this[int x, int y]
         {
             get
             {
@@ -27,7 +27,7 @@ namespace Renderer
         {
             this.Width = width;
             this.Height = height;
-            this._pixels = new float[width, width];
+            this._pixels = new Color[width, width];
         }
 
         public Image ToImage()
@@ -37,13 +37,21 @@ namespace Renderer
             {
                 for (int y = 0; y < this.Height; ++y)
                 {
-                    int i = System.Math.Min(255, (int)(this._pixels[x, y] * 255));
-                    i = System.Math.Max(i, 0);
-                    Color color = Color.FromArgb(i, i, i);
-                    image.SetPixel(x, y, color);
+                    Color color = new Color(this._pixels[x, y]);
+                    this.Clamp(color);
+                    System.Drawing.Color imageColor =
+                        System.Drawing.Color.FromArgb((int)(color.R*255), (int)(color.G*255), (int)(color.B*255));
+                    image.SetPixel(x, y, imageColor);
                 }
             }
             return image;
+        }
+
+        public void Clamp(Color color)
+        {
+            color.R = System.Math.Max(0, System.Math.Min(1, color.R));
+            color.G = System.Math.Max(0, System.Math.Min(1, color.G));
+            color.B = System.Math.Max(0, System.Math.Min(1, color.B));
         }
     }
 }

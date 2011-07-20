@@ -4,16 +4,16 @@ namespace Renderer
 {
     public class Light
     {
-        public float E { get; private set; }
+        public Color E { get; private set; }
         public Point Position { get; private set; }
 
-        public Light(float e)
+        public Light(Color e)
         {
             this.E = e;
             this.Position = new Point();
         }
 
-        public float L(Point point, out Point lightPos, out Normal lightDir)
+        public Color L(Point point, out Point lightPos, out Normal lightDir)
         {
             Vector dir = this.Position - point;
             float dist = dir.Magnitude();

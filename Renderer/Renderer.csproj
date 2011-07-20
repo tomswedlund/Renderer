@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BRDFs\LambertianBRDF.cs" />
     <Compile Include="Cameras\PerspectiveCamera.cs" />
+    <Compile Include="Color.cs" />
     <Compile Include="IBRDF.cs" />
     <Compile Include="Cameras\OrthogonalCamera.cs" />
     <Compile Include="Film.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Integrators\DirectIntegrator.cs" />
     <Compile Include="Intersection.cs" />
     <Compile Include="IShape.cs" />
+    <Compile Include="ITexture.cs" />
     <Compile Include="Light.cs" />
     <Compile Include="Math\IVector.cs" />
     <Compile Include="Math\Matrix.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Scene.cs" />
     <Compile Include="Shapes\PlaneShape.cs" />
     <Compile Include="Shapes\SphereShape.cs" />
+    <Compile Include="Textures\HomogeneousTexture.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Notes.txt" />

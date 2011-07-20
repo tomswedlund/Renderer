@@ -4,6 +4,7 @@ using Renderer.BRDFs;
 using Renderer.Cameras;
 using Renderer.Math;
 using Renderer.Shapes;
+using Renderer.Textures;
 
 namespace Renderer
 {
@@ -15,13 +16,13 @@ namespace Renderer
             Film film = new Film(500, 500);
             
             Scene scene = new Scene();
-            Light light = new Light(1);
-            light.Transform(new Transformation().Translate(0.6f, 0, -0.3f));
+            Light light = new Light(new Color(10, 10, 10));
+            light.Transform(new Transformation().Translate(1.5f, 0, -1.5f));
             scene.Lights.Add(light);
-            IShape shape = new SphereShape(0.2f, new LambertianBRDF());
-            shape.Transform(new Transformation().Translate(0.2f, -0.1f, 0.4f));
+            IShape shape = new SphereShape(0.2f, new LambertianBRDF(), new HomogeneousTexture(new Color(1, 1, 0)));
+            shape.Transform(new Transformation().Translate(0.2f, -0.2f, 0.4f));
             scene.Shapes.Add(shape);
-            shape = new PlaneShape(new LambertianBRDF());
+            shape = new PlaneShape(new LambertianBRDF(), null);
             shape.Transform(new Transformation().Scale(1.2f, 1.2f, 1.2f).Translate(0, 0, 1).Rotate(45, 1, 0, 0));
             scene.Shapes.Add(shape);
     

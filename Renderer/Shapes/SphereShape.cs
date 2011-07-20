@@ -8,11 +8,13 @@ namespace Renderer.Shapes
         private Point _center = new Point();
 
         public IBRDF BRDF { get; private set; }
+        public ITexture Texture { get; private set; }
 
-        public SphereShape(float radius, IBRDF brdf)
+        public SphereShape(float radius, IBRDF brdf, ITexture texture)
         {
             this._radius = radius;
             this.BRDF = brdf;
+            this.Texture = texture;
         }
 
         public bool Intersect(Ray ray, out Intersection intersection, out float t)

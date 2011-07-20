@@ -7,10 +7,12 @@ namespace Renderer.Shapes
         private Point[] _corners = new Point[4];
 
         public IBRDF BRDF { get; private set; }
+        public ITexture Texture { get; private set; }
 
-        public PlaneShape(IBRDF brdf)
+        public PlaneShape(IBRDF brdf, ITexture texture)
         {
             this.BRDF = brdf;
+            this.Texture = texture;
             this.SetupCorners();
         }
 
