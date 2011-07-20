@@ -72,6 +72,7 @@
     <Compile Include="Shapes\PlaneShape.cs" />
     <Compile Include="Shapes\SphereShape.cs" />
     <Compile Include="Textures\HomogeneousTexture.cs" />
+    <Compile Include="Textures\ImageTexture.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Notes.txt" />

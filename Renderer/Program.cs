@@ -19,7 +19,8 @@ namespace Renderer
             Light light = new Light(new Color(10, 10, 10));
             light.Transform(new Transformation().Translate(1.5f, 0, -1.5f));
             scene.Lights.Add(light);
-            IShape shape = new SphereShape(0.2f, new LambertianBRDF(), new HomogeneousTexture(new Color(1, 1, 0)));
+            Image texImage = Image.FromFile(@"C:\Users\tom.swedlund\Documents\src\images\test-image2.png");
+            IShape shape = new SphereShape(0.2f, new LambertianBRDF(), new ImageTexture(texImage));
             shape.Transform(new Transformation().Translate(0.2f, -0.2f, 0.4f));
             scene.Shapes.Add(shape);
             shape = new PlaneShape(new LambertianBRDF(), null);
